@@ -39,6 +39,16 @@ const todoWrapper = () => {
     );
   };
 
+  const editTodo = (id, newContent) => {
+    setTodos(
+      todos.map((todo) => {
+        return id === todo.id
+          ? { ...todo, content: newContent, isEdit: false }
+          : todo;
+      })
+    );
+  };
+
   return (
     <div className="todoWrapper">
       <h1>待辦事項</h1>
@@ -50,6 +60,8 @@ const todoWrapper = () => {
             key={todo.id}
             deleteTodo={deleteTodo}
             toggleComplet={toggleComplet}
+            toggleEdit={toggleEdit}
+            editTodo={editTodo}
           />
         );
       })}
