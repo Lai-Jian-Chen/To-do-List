@@ -4,12 +4,15 @@ import TodoList from "./TodoList";
 
 const todoWrapper = () => {
   const [todos, setTodos] = useState([
-    { content: "學習", id: Math.random() },
-    { content: "吃飯", id: Math.random() },
+    { content: "學習", id: Math.random(), isComplet: false, isEdit: false },
+    { content: "吃飯", id: Math.random(), isComplet: false, isEdit: false },
   ]);
 
   const addTodo = (content) => {
-    setTodos([...todos, { content, id: Math.random() }]);
+    setTodos([
+      ...todos,
+      { content, id: Math.random(), isComplet: false, isEdit: false },
+    ]);
   };
 
   const deleteTodo = (id) => {
@@ -20,12 +23,35 @@ const todoWrapper = () => {
     );
   };
 
+  const toggleComplet = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id ? { ...todo, isComplet: !todo.isComplet } : todo;
+      })
+    );
+  };
+
+  const toggleEdit = (id) => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id ? { ...todo, isEdit: !todo.isEdit } : todo;
+      })
+    );
+  };
+
   return (
     <div className="todoWrapper">
       <h1>待辦事項</h1>
       <CreateForm addTodo={addTodo} />
       {todos.map((todo) => {
-        return <TodoList todo={todo} key={todo.id} deleteTodo={deleteTodo} />;
+        return (
+          <TodoList
+            todo={todo}
+            key={todo.id}
+            deleteTodo={deleteTodo}
+            toggleComplet={toggleComplet}
+          />
+        );
       })}
     </div>
   );
