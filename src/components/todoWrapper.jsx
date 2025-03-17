@@ -1,12 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CreateForm from "./CreateForm";
 import TodoList from "./TodoList";
 
 const todoWrapper = () => {
-  const [todos, setTodos] = useState([
-    { content: "學習", id: Math.random(), isComplet: false, isEdit: false },
-    { content: "吃飯", id: Math.random(), isComplet: false, isEdit: false },
-  ]);
+  const [todos, setTodos] = useState(() => {
+    return (
+      JSON.parse(localStorage.getItem("todos")) || [
+        {
+          content: "擁有自我意識",
+          id: Math.random(),
+          isComplet: true,
+          isEdit: false,
+        },
+        {
+          content: "變成一隻魚",
+          id: Math.random(),
+          isComplet: false,
+          isEdit: false,
+        },
+      ]
+    );
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (content) => {
     setTodos([
@@ -43,7 +61,7 @@ const todoWrapper = () => {
     setTodos(
       todos.map((todo) => {
         return id === todo.id
-          ? { ...todo, content: newContent, isEdit: false }
+          ? { ...todo, content: newContent, isComplet: false, isEdit: false }
           : todo;
       })
     );
@@ -51,7 +69,7 @@ const todoWrapper = () => {
 
   return (
     <div className="todoWrapper">
-      <h1>待辦事項</h1>
+      <h1>備忘錄</h1>
       <CreateForm addTodo={addTodo} />
       <div className="line"></div>
       {todos.map((todo) => {
