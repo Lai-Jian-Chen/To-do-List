@@ -53,6 +53,7 @@ const todoWrapper = () => {
     <div className="todoWrapper">
       <h1>待辦事項</h1>
       <CreateForm addTodo={addTodo} />
+      <div className="line"></div>
       {todos.map((todo) => {
         return (
           <TodoList

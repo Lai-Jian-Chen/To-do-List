@@ -9,16 +9,16 @@ function EditForm({ todo, editTodo }) {
   };
 
   return (
-    <form className="CreateForm">
+    <form className="edit-form">
       <input
         type="text"
-        id="inputText"
+        id="editText"
         onChange={(e) => {
           setContent(e.target.value);
         }}
         value={newContent}
       />
-      <button id="addBtn" type="submit" onClick={btnHandler}>
+      <button id="editBtn" type="submit" onClick={btnHandler}>
         完成
       </button>
     </form>
