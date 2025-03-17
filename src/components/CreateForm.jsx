@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 
-const CreateForm = () => {
+const CreateForm = ({ addTodo }) => {
   const [content, setContent] = useState("");
 
   const btnHandler = (e) => {
     e.preventDefault();
+    addTodo(content);
     setContent("");
   };
 
   const inputHandler = (e) => {
-    content = e.target.value;
+    setContent(e.target.value);
   };
 
   return (
@@ -18,8 +19,8 @@ const CreateForm = () => {
         type="text"
         placeholder="<<< 輸入 <<<"
         id="inputText"
-        value={content}
         onChange={inputHandler}
+        value={content}
       />
       <button id="addBtn" type="submit" onClick={btnHandler}>
         加入
