@@ -69,7 +69,7 @@ const todoWrapper = () => {
 
   return (
     <div className="todoWrapper">
-      <h1>備忘錄</h1>
+      <h1>待辦清單</h1>
       <CreateForm addTodo={addTodo} />
       <div className="line"></div>
       {todos.map((todo) => {
