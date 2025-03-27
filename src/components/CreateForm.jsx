@@ -5,7 +5,9 @@ const CreateForm = ({ addTodo }) => {
 
   const btnHandler = (e) => {
     e.preventDefault();
-    addTodo(content);
+    if (content) {
+      addTodo(content);
+    }
     setContent("");
   };
 
