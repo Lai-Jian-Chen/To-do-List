@@ -1,126 +1,169 @@
-$themeColor: rgb(66, 227, 255);
+@use "./variable" as *;
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  body {
-    background-color: $themeColor;
-    color: white;
+  overflow: hidden;
+}
+body {
+  padding: 8px;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../asset/background.jpg");
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  .todoWrapper {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: sans-serif;
-    .todoWrapper {
+    flex-direction: column;
+    align-items: center;
+    background-color: $subtopic;
+    width: 100%;
+    // max-width: 37.5rem;
+    min-width: 35vw;
+    max-height: 90vh;
+    padding: 1rem;
+    border-radius: 5px;
+    position: relative;
+    top: 5vh;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 5px;
+      background-color: rgba(0, 0, 0, 0.554);
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(170, 169, 169, 0.753);
+      border-radius: 2px;
+    }
+    h1 {
+      white-space: nowrap;
+      color: $themeColor;
+      font-size: clamp(2.5rem, calc(2.7rem + 2vw), 3.5rem);
+      text-align: center;
+      min-height: 74px;
+    }
+    .line {
+      border: 2px solid $themeColor;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    .CreateForm {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      background-color: rgb(16, 1, 86);
-      width: 37.5rem;
-      padding: 1.5rem;
+      width: 90%;
+      min-height: 2.6rem;
+      margin: 1.3rem 0;
+      border: 2px solid $themeColor;
+      border-radius: 2px;
+      #inputText {
+        font-size: 1.3rem;
+        padding-left: 0.5rem;
+        border: none;
+        background: none;
+        color: white;
+        width: 80%;
+        outline: none;
+        &::placeholder {
+          color: ($themeColor);
+          text-align: center;
+        }
+      }
+      #addBtn {
+        border: none;
+        background-color: black;
+        font-weight: 900;
+        color: $themeColor;
+        cursor: pointer;
+        width: 20%;
+        height: 100%;
+        border-left: 2px solid $themeColor;
+      }
+    }
+    .TodoList {
+      border: 2px solid $themeColor;
+      background-color: $todoListColor;
+      color: $themeColor;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 93%;
+      height: auto;
       border-radius: 5px;
-      position: relative;
-      top: 5vh;
-      h1 {
-        font-size: 3.5rem;
-        text-align: center;
-      }
-      .line {
-        border: 2px solid $themeColor;
-        width: 100%;
-        margin: 1rem 0;
-      }
-      .CreateForm {
+      margin: 0.5rem;
+      div {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-        height: 2.8rem;
-        margin: 1.3rem 0;
-        border: 2px solid $themeColor;
-        border-radius: 2px;
-        #inputText {
-          font-size: 1.3rem;
-          padding-left: 0.5rem;
+        width: 74px;
+        .list-Btn {
           border: none;
-          background: none;
-          color: white;
-          width: 92%;
-          outline: none;
-          &::placeholder {
-            color: rgb(152, 176, 192);
-            text-align: center;
-          }
-        }
-        #addBtn {
-          border: none;
-          background-color: $themeColor;
-          font-weight: 900;
-          color: rgb(17, 0, 122);
-          cursor: pointer;
-          width: 8%;
+          margin: 0 8px;
+          width: 100%;
           height: 100%;
-        }
-      }
-      .TodoList {
-        background-color: rgb(43, 43, 201);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 93%;
-        height: 2.8rem;
-        border-radius: 5px;
-        margin: 0.5rem;
-        div {
-          display: flex;
-          height: 1.3rem;
-          .list-Btn {
-            border: none;
-            cursor: pointer;
-            margin: 0 8px;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-          }
-        }
-        p {
-          padding-left: 1rem;
-          font-size: 1.2rem;
-          font-weight: 500;
           cursor: pointer;
+          min-width: auto;
         }
       }
-      .complet {
-        opacity: 0.7;
-        text-decoration: line-through 5px black;
-      }
-
-      .edit-form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 92%;
-        height: 2.8rem;
-        margin: 1.3rem 0;
-        border: 2px solid rgb(110, 243, 92);
-        border-radius: 2px;
-        #editText {
-          font-size: 1.3rem;
-          padding-left: 0.5rem;
-          border: none;
-          background: none;
-          color: white;
-          width: 92%;
-          outline: none;
+      p {
+        // width: 80%;
+        padding: 5px 0 5px 1rem;
+        font-size: 1.2rem;
+        font-weight: 500;
+        cursor: pointer;
+        white-space: normal;
+        word-wrap: break-word;
+        &::-webkit-scrollbar {
+          height: 2px;
         }
-        #editBtn {
-          border: none;
-          background-color: rgb(46, 217, 3);
-          color: rgb(4, 0, 0);
-          cursor: pointer;
-          width: 8%;
-          height: 100%;
+        &::-webkit-scrollbar-thumb {
+          background-color: rgba(255, 255, 255, 0.4);
+          border-radius: 2px;
         }
       }
+    }
+    .complet {
+      opacity: 0.7;
+      text-decoration: line-through 5px black;
+    }
+    .edit-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 92%;
+      min-height: 2rem;
+      margin: 1.2rem 0;
+      border: 2px solid $third_theme;
+      border-radius: 2px;
+      #editText {
+        font-size: 1.3rem;
+        padding-left: 0.5rem;
+        border: none;
+        background: none;
+        color: white;
+        width: 80%;
+        outline: none;
+      }
+      #editBtn {
+        border: none;
+        background-color: $subtopic;
+        color: $third_theme;
+        border-left: 2px solid $third_theme;
+        cursor: pointer;
+        width: 20%;
+        height: 100%;
+      }
+    }
+    @media (max-width: 370px) {
+      padding: 0.8rem;
+    }
+    @media (max-width: 280px) {
+      padding: 0.6rem;
+    }
+    @media (max-width: 240px) {
+      padding: 0.6rem;
+      transform: scale(0.9);
     }
   }
 }
