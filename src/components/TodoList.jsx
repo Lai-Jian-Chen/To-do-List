@@ -21,7 +21,7 @@ const TodoList = ({
       >
         {todo.content}
       </p>
-      <div>
+      <div className="icons">
         <CiEdit className="list-Btn" onClick={() => toggleEdit(todo.id)} />
         <RiDeleteBin6Line
           className="list-Btn"

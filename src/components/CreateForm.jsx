@@ -19,7 +19,7 @@ const CreateForm = ({ addTodo }) => {
     <form className="CreateForm">
       <input
         type="text"
-        placeholder="<<< 輸入 <<<"
+        placeholder="<< 輸入 <<"
         id="inputText"
         onChange={inputHandler}
         value={content}

@@ -6,29 +6,30 @@
   margin: 0;
   overflow: hidden;
 }
+
 body {
   padding: 8px;
   width: 100vw;
   height: 100vh;
-  background-image: url("../asset/background.jpg");
-  color: white;
+  background-image: url("../asset/pexels-padrinan-19670.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: $themeColor;
   display: flex;
   justify-content: center;
   font-family: sans-serif;
+  color: white;
   .todoWrapper {
+    min-width: 35vw;
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: $subtopic;
-    width: 100%;
-    // max-width: 37.5rem;
-    min-width: 35vw;
-    max-height: 90vh;
-    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.815);
+    padding: 1rem 1rem 2rem 1rem;
     border-radius: 5px;
     position: relative;
     top: 5vh;
-    overflow-y: auto;
     &::-webkit-scrollbar {
       width: 5px;
       background-color: rgba(0, 0, 0, 0.554);
@@ -48,20 +49,20 @@ body {
     .line {
       border: 2px solid $themeColor;
       width: 100%;
-      margin: 1rem 0;
+      margin: 0.8rem 0;
     }
     .CreateForm {
+      width: 90%;
+      min-height: 2.3rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 90%;
-      min-height: 2.6rem;
-      margin: 1.3rem 0;
+      margin: 1rem 0;
       border: 2px solid $themeColor;
       border-radius: 2px;
       #inputText {
         font-size: 1.3rem;
-        padding-left: 0.5rem;
+        padding: 0.4rem;
         border: none;
         background: none;
         color: white;
@@ -70,89 +71,19 @@ body {
         &::placeholder {
           color: ($themeColor);
           text-align: center;
+          opacity: 0.6;
         }
       }
       #addBtn {
+        min-height: 2.3rem;
         border: none;
-        background-color: black;
+        background-color: inherit;
         font-weight: 900;
         color: $themeColor;
         cursor: pointer;
         width: 20%;
         height: 100%;
         border-left: 2px solid $themeColor;
-      }
-    }
-    .TodoList {
-      border: 2px solid $themeColor;
-      background-color: $todoListColor;
-      color: $themeColor;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 93%;
-      height: auto;
-      border-radius: 5px;
-      margin: 0.5rem;
-      div {
-        display: flex;
-        width: 74px;
-        .list-Btn {
-          border: none;
-          margin: 0 8px;
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-          min-width: auto;
-        }
-      }
-      p {
-        // width: 80%;
-        padding: 5px 0 5px 1rem;
-        font-size: 1.2rem;
-        font-weight: 500;
-        cursor: pointer;
-        white-space: normal;
-        word-wrap: break-word;
-        &::-webkit-scrollbar {
-          height: 2px;
-        }
-        &::-webkit-scrollbar-thumb {
-          background-color: rgba(255, 255, 255, 0.4);
-          border-radius: 2px;
-        }
-      }
-    }
-    .complet {
-      opacity: 0.7;
-      text-decoration: line-through 5px black;
-    }
-    .edit-form {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 92%;
-      min-height: 2rem;
-      margin: 1.2rem 0;
-      border: 2px solid $third_theme;
-      border-radius: 2px;
-      #editText {
-        font-size: 1.3rem;
-        padding-left: 0.5rem;
-        border: none;
-        background: none;
-        color: white;
-        width: 80%;
-        outline: none;
-      }
-      #editBtn {
-        border: none;
-        background-color: $subtopic;
-        color: $third_theme;
-        border-left: 2px solid $third_theme;
-        cursor: pointer;
-        width: 20%;
-        height: 100%;
       }
     }
     @media (max-width: 370px) {
@@ -164,6 +95,102 @@ body {
     @media (max-width: 240px) {
       padding: 0.6rem;
       transform: scale(0.9);
+    }
+
+    .todolist_group {
+      overflow-y: auto;
+      width: 95%;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+      // align-items: center;
+      .TodoList {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+        margin: 0.5rem;
+        border: 2px solid $themeColor;
+        background-color: $todoListColor;
+        color: $themeColor;
+        height: auto;
+        position: relative;
+        .icons {
+          display: flex;
+          width: 74px;
+          height: auto;
+          .list-Btn {
+            border: none;
+            margin: 0 8px;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+          }
+        }
+        p {
+          width: 83%;
+          padding: 3px 0 3px 0.8rem;
+          font-size: calc(0.5rem + 0.8vw);
+          position: relative;
+          font-weight: 500;
+          cursor: pointer;
+          white-space: normal;
+          word-wrap: break-word;
+        }
+        &.complet {
+          opacity: 0.5;
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 3%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 70%; // 你要的寬度
+            height: 4px; // 線的厚度
+            background-color: black;
+            border-radius: 2px;
+            pointer-events: none;
+          }
+        }
+      }
+      &::-webkit-scrollbar {
+        width: 5px;
+        background-color: rgba(0, 0, 0, 0.554);
+        border-radius: 2px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: rgba(170, 169, 169, 0.753);
+        border-radius: 2px;
+      }
+      .edit-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 83%;
+        // min-height: 2rem;
+        margin: 1.2rem auto;
+        border: 2px solid $third_theme;
+        border-radius: 5px;
+        #editText {
+          font-size: calc(0.5rem + 0.8vw);
+          padding: 10px 10px 10px 0.5rem;
+          border: none;
+          background: none;
+          color: white;
+          width: 80%;
+          outline: none;
+        }
+        #editBtn {
+          border: none;
+          background-color: inherit;
+          color: $third_theme;
+          border-left: 2px solid $third_theme;
+          cursor: pointer;
+          width: 20%;
+          height: 100%;
+        }
+      }
     }
   }
 }

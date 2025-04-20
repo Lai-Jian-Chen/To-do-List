@@ -72,18 +72,20 @@ const todoWrapper = () => {
       <h1>待辦清單</h1>
       <CreateForm addTodo={addTodo} />
       <div className="line"></div>
-      {todos.map((todo) => {
-        return (
-          <TodoList
-            todo={todo}
-            key={todo.id}
-            deleteTodo={deleteTodo}
-            toggleComplet={toggleComplet}
-            toggleEdit={toggleEdit}
-            editTodo={editTodo}
-          />
-        );
-      })}
+      <div className="todolist_group">
+        {todos.map((todo) => {
+          return (
+            <TodoList
+              todo={todo}
+              key={todo.id}
+              deleteTodo={deleteTodo}
+              toggleComplet={toggleComplet}
+              toggleEdit={toggleEdit}
+              editTodo={editTodo}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
