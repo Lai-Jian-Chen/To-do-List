@@ -40,11 +40,12 @@ body {
       border-radius: 2px;
     }
     h1 {
+      min-height: 50px;
+      max-height: 63px;
       white-space: nowrap;
       color: $themeColor;
-      font-size: clamp(2.5rem, calc(2.7rem + 2vw), 3.5rem);
+      font-size: clamp(2rem, calc(2rem + 2vw), 3rem);
       text-align: center;
-      min-height: 74px;
     }
     .line {
       border: 2px solid $themeColor;
@@ -100,10 +101,6 @@ body {
     .todolist_group {
       overflow-y: auto;
       width: 95%;
-      // display: flex;
-      // flex-direction: column;
-      // justify-content: space-between;
-      // align-items: center;
       .TodoList {
         display: flex;
         justify-content: space-between;
@@ -114,7 +111,33 @@ body {
         background-color: $todoListColor;
         color: $themeColor;
         height: auto;
-        position: relative;
+        .todo_content {
+          width: 83%;
+          padding: 3px 0 3px 0.5rem;
+          display: flex;
+          align-items: center;
+          input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2); /* 預設大小 */
+            cursor: pointer;
+
+            @media (max-width: 768px) {
+              transform: scale(1); /* 縮小 checkbox */
+              margin-right: 5px;
+            }
+            @media (max-width: 480px) {
+              transform: scale(0.8); /* 更小的 checkbox */
+              margin-right: 3px;
+            }
+          }
+          p {
+            font-size: calc(0.8rem + 0.7vw);
+            position: relative;
+            font-weight: 500;
+            white-space: normal;
+            word-wrap: break-word;
+          }
+        }
         .icons {
           display: flex;
           width: 74px;
@@ -127,31 +150,8 @@ body {
             cursor: pointer;
           }
         }
-        p {
-          width: 83%;
-          padding: 3px 0 3px 0.8rem;
-          font-size: calc(0.5rem + 0.8vw);
-          position: relative;
-          font-weight: 500;
-          cursor: pointer;
-          white-space: normal;
-          word-wrap: break-word;
-        }
         &.complet {
-          opacity: 0.5;
-
-          &::after {
-            content: "";
-            position: absolute;
-            left: 3%;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 70%; // 你要的寬度
-            height: 4px; // 線的厚度
-            background-color: black;
-            border-radius: 2px;
-            pointer-events: none;
-          }
+          opacity: 0.6;
         }
       }
       &::-webkit-scrollbar {

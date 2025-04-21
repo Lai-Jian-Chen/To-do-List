@@ -7,13 +7,13 @@ const todoWrapper = () => {
     return (
       JSON.parse(localStorage.getItem("todos")) || [
         {
-          content: "擁有自我意識",
+          content: "準備面試",
           id: Math.random(),
           isComplet: true,
           isEdit: false,
         },
         {
-          content: "變成一隻魚",
+          content: "打掃房間",
           id: Math.random(),
           isComplet: false,
           isEdit: false,
@@ -61,7 +61,7 @@ const todoWrapper = () => {
     setTodos(
       todos.map((todo) => {
         return id === todo.id
-          ? { ...todo, content: newContent, isComplet: false, isEdit: false }
+          ? { ...todo, content: newContent, isEdit: false }
           : todo;
       })
     );

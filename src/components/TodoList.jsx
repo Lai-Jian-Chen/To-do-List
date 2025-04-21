@@ -14,13 +14,14 @@ const TodoList = ({
     <EditForm todo={todo} editTodo={editTodo} />
   ) : (
     <div className={`TodoList ${todo.isComplet ? "complet" : ""}`}>
-      <p
-        onClick={() => {
-          toggleComplet(todo.id);
-        }}
-      >
-        {todo.content}
-      </p>
+      <div className="todo_content" onClick={() => toggleComplet(todo.id)}>
+        <input
+          type="checkbox"
+          checked={todo.isComplet}
+          onChange={() => toggleComplet(todo.id)} // 切換完成狀態
+        />
+        <p>{todo.content}</p>
+      </div>
       <div className="icons">
         <CiEdit className="list-Btn" onClick={() => toggleEdit(todo.id)} />
         <RiDeleteBin6Line
