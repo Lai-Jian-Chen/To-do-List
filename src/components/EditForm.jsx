@@ -5,7 +5,9 @@ function EditForm({ todo, editTodo }) {
 
   const btnHandler = (e) => {
     e.preventDefault();
-    editTodo(todo.id, newContent);
+    if (newContent) {
+      editTodo(todo.id, newContent);
+    }
   };
 
   return (
