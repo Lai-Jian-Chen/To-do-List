@@ -40,8 +40,6 @@ body {
       border-radius: 2px;
     }
     h1 {
-      min-height: 50px;
-      max-height: 63px;
       white-space: nowrap;
       color: $themeColor;
       font-size: clamp(2rem, calc(2rem + 2vw), 3rem);
